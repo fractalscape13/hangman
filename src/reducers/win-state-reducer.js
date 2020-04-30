@@ -1,7 +1,7 @@
 import * as c from './../actions/ActionTypes';
 
 export default (state = {}, action) => {
-  const { displayWord, secretWord, win, lose, correctLetters, missedLetters, currentDiagram} = action;
+  const {  win, lose } = action;
   switch (action.type) {
     case c.NEW_GAME:
       return Object.assign({}, state, {
