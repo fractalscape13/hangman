@@ -21,7 +21,7 @@ const Word = props => {
     <ulStyled>
       {secretArr.map((char, i) => 
         <li key={i}>
-          <span className={props.guesses.includes(char)?'visible':''}>{char}</span>
+          <span className={props.correctLetters.includes(char) || props.missedLetters.includes(char) ?'visible':''}>{char}</span>
         </li>
       )}
     </ulStyled>
@@ -30,6 +30,7 @@ const Word = props => {
 
 Word.propTypes = {
   secret: PropTypes.string,
-  guesses: PropTypes.array
+  correctLetters: PropTypes.array,
+  missedLetters: PropTypes.array
 }
 export default Word;
