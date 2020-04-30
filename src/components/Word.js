@@ -17,6 +17,7 @@ const Word = props => {
     }
 `;
 
+console.log(props);
   return (
     <ulStyled>
       {props.secret.map((char, i) => 

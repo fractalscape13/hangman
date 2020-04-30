@@ -11,18 +11,32 @@ class GameControl extends React.Component {
   // constructor(props) {
   //   super(props);
   // }
-  componentDidMount() {
+  
+  resetGame = () => {
     a.newGame();
     a.setWord();    
   }
+  
+  componentDidMount() {
+    console.log("Mounted");
+    this.resetGame();
+    console.log(this.props.gameState);
+    
+  }
 
   render() {
+    console.log("THIS.PROPS IS:::::", this.props.winState);
     return (
       <React.Fragment>
-        <WinState/>
-        <Diagram currentDiagram={this.props.currentDiagram}/>
-        <Word secret={this.props.secretWord} correctLetters={this.this.props.correctLetters} missedLetters={this.props.missedLetters}/>
-        <Letters />
+        {this.props.winState.win ? <WinState onReset={this.resetGame}/> : null}
+        <Diagram currentDiagram={this.props.winState.currentDiagram}/>
+        <Word 
+          secret={this.props.gameState.secretWord} 
+          correctLetters={this.props.winState.correctLetters} 
+          missedLetters={this.props.winState.missedLetters}/>
+        <Letters 
+          correctLetters={this.props.winState.correctLetters} 
+          missedLetters={this.props.winState.missedLetters}/>
       </React.Fragment>
     );
   }

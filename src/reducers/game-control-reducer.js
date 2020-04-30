@@ -1,7 +1,17 @@
 import * as c from './../actions/ActionTypes';
 import InitialState from '../components/InitialState';
 
-export default (state = {}, action) => {
+let initializeState = {
+  displayWord: [],
+  secretWord: [],
+  win: false,
+  lose: false,
+  correctLetters: [],
+  missedLetters: [],
+  currentDiagram: 0
+}
+
+export default (state=initializeState, action) => {
   const { displayWord, secretWord, correctLetters, missedLetters, currentDiagram } =  action;
   switch (action.type) {
     case c.GUESS:
@@ -17,7 +27,7 @@ export default (state = {}, action) => {
         return Object.assign({}, state, {
           displayWord: secret,
           secretWord: secret,
-          currentDiagram: '../../img/step0.png'
+          currentDiagram: 0
         })
     default:
       return state;
