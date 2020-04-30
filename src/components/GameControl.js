@@ -6,7 +6,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class GameControl extends React.Component {
-  
+  state = {
+    secretWord: secretword.split(''),
+    win: false,
+    lose: false,
+    correctLetters: [],
+    missedLetters: [],
+    currentDiagram: missedLetters.length
+  }
   constructor(props) {
     super(props);
     
