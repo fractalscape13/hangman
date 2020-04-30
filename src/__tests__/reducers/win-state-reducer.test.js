@@ -1,12 +1,13 @@
 import winStateReducer from '../../reducers/win-state-reducer';
+import * as c from '../../actions/ActionTypes';
 
 
-describe('winStateRedcer', () => {
+describe('winStateReducer', () => {
   let action;
 
   test('Should set/reset state to new game status', () => {
     action = {
-      type: 'NEW_GAME',
+      type: c.NEW_GAME,
       displayWord: [],
       secretWord: [],
       correctLetters: [],
@@ -35,14 +36,14 @@ describe('winStateRedcer', () => {
 
   test('Should set win state to true', () => {
     action = {
-      type: 'WIN_GAME',
-      displayWord: [],
-      secretWord: [],
-      correctLetters: [],
-      missedLetters: [],
+      type: c.WIN_GAME,
+      // displayWord: [],
+      // secretWord: [],
+      // correctLetters: [],
+      // missedLetters: [],
       win: true,
-      lose: false,
-      currentDiagram: 0
+      // lose: false,
+      // currentDiagram: 0
     };
 
     expect(winStateReducer({
@@ -52,19 +53,19 @@ describe('winStateRedcer', () => {
       missedLetters: [],
       win: false,
       lose: false,
-      currentDiagram: 0}, action)).toEqual({
+      currentDiagram: 5}, action)).toEqual({
       displayWord: [],
       secretWord: [],
       correctLetters: [],
       missedLetters: [],
       win: true,
       lose: false,
-      currentDiagram: 0
+      currentDiagram: 5
     });
   })
   test('Should set lose state to true', () => {
     action = {
-      type: 'LOSE_GAME',
+      type: c.LOSE_GAME,
       displayWord: [],
       secretWord: [],
       correctLetters: [],
