@@ -3,6 +3,7 @@ import Letters from './Letters';
 import Word from './Word'
 import { connect } from 'react-redux';
 import WinState from './WinState';
+import LoseState from './LoseState';
 import Diagram from './Diagram';
 import * as a from './../actions/index';
 
@@ -32,6 +33,10 @@ class GameControl extends React.Component {
         correctLetters: this.props.gameState.correctLetters,
         char: letter
       };
+      if (this.props.gameState.secretWord.length == 1) {
+        const winAction = a.winGame();
+        this.props.dispatch(winAction);
+      }
       const action = a.correctGuess(guess);
       this.props.dispatch(action);
     } else {
@@ -40,6 +45,10 @@ class GameControl extends React.Component {
         currentDiagram: this.props.gameState.currentDiagram,
         char: letter
       };
+      if (this.props.gameState.currentDiagram == 6) {
+        const loseAction = a.loseGame();
+        this.props.dispatch(loseAction);
+      }
       const action2 = a.wrongGuess(guess2);
       this.props.dispatch(action2);
     }
@@ -51,14 +60,18 @@ class GameControl extends React.Component {
     return (
       <React.Fragment>
         {this.props.gameState.win ? <WinState onReset={this.resetGame}/> : null}
+        {this.props.gameState.lose ? <LoseState onReset={this.resetGame}/> : null}
         <Diagram currentDiagram={this.props.gameState.currentDiagram}/>
         <Word 
           secret={this.props.gameState.displayWord}
           correctLetters={this.props.gameState.correctLetters} 
+          loseState={this.props.gameState.lose}
           />
         <Letters 
           onLetterClick={this.handleLetterClick}
           alreadyGuessedLetters={[...this.props.gameState.correctLetters, ...this.props.gameState.missedLetters]} 
+          winState={this.props.gameState.win}
+          loseState={this.props.gameState.lose}
           />
       </React.Fragment>
     );

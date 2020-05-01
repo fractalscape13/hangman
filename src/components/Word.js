@@ -29,7 +29,11 @@ const Word = props => {
       {props.secret.map((char, i) => 
         <div style={underline} key={i}>
           <li style={liStyles} key={i}>
-            <span className={props.correctLetters.includes(char) ?null:'hiddenWord'}>{char}</span>
+            <span className={props.correctLetters.includes(char) 
+              ? null 
+              : props.loseState ?
+              'gameOverWord' :
+              'hiddenWord'}>{char}</span>
           </li>
         </div>
       )}

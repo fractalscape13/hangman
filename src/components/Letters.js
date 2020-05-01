@@ -13,7 +13,7 @@ const ulStyles = {
 const Letters = props => (
   <ul style={ulStyles} {...props}>
     {letters.map(letter => (
-      <li className={(props.alreadyGuessedLetters.includes(letter) ? 'alreadyClicked' : 'clickable')}
+      <li className={(props.alreadyGuessedLetters.includes(letter) ? 'alreadyClicked' : props.winState || props.loseState ? 'endGameFreeze' : 'clickable')}
       key={letter}
       value={letter}
       // disabled={props.correctLetters.includes(letter) || props.missedLetters.includes(letter) ? true:false}
