@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -16,12 +16,13 @@ const Word = props => {
       visibility: visible;
     }
 `;
-  const secretArr = props.secret.split('');
+
+console.log(props);
   return (
     <ulStyled>
-      {secretArr.map((char, i) => 
+      {props.secret.map((char, i) => 
         <li key={i}>
-          <span className={props.guesses.includes(char)?'visible':''}>{char}</span>
+          <span className={props.correctLetters.includes(char) || props.missedLetters.includes(char) ?'visible':''}>{char}</span>
         </li>
       )}
     </ulStyled>
@@ -29,7 +30,8 @@ const Word = props => {
 };
 
 Word.propTypes = {
-  secret: PropTypes.string,
-  guesses: PropTypes.array
+  secret: PropTypes.array,
+  correctLetters: PropTypes.array,
+  missedLetters: PropTypes.array
 }
 export default Word;

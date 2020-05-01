@@ -1,40 +1,51 @@
 import React from 'react';
 import Letters from './Letters';
-import Button from './Button';
 import Word from './Word'
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import WinState from './WinState';
+import Diagram from './Diagram';
+import * as a from './../actions';
 
 class GameControl extends React.Component {
   
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  // }
+  
+  resetGame = () => {
+    a.newGame();
+    a.setWord();    
+  }
+  
+  componentDidMount() {
+    console.log("Mounted");
+    this.resetGame();
+    console.log(this.props.gameState);
     
   }
 
-  // handleClick = e => {
-  //   const letter = e.target.textContent.toLowerCase();
-  //   return this.checkLetter(letter);
-  // }
   render() {
+    console.log("THIS.PROPS IS:::::", this.props.winState);
     return (
       <React.Fragment>
-        <WinState/>
-        <Diagram currentDiagram={this.state.currentDiagram}/>
-        <Word secret={this.state.secretWord}/>
-        <Letters somepropsimnotthinkingofyet={somestate}/>
+        {this.props.winState.win ? <WinState onReset={this.resetGame}/> : null}
+        <Diagram currentDiagram={this.props.winState.currentDiagram}/>
+        <Word 
+          secret={this.props.gameState.secretWord} 
+          correctLetters={this.props.winState.correctLetters} 
+          missedLetters={this.props.winState.missedLetters}/>
+        <Letters 
+          correctLetters={this.props.winState.correctLetters} 
+          missedLetters={this.props.winState.missedLetters}/>
       </React.Fragment>
     );
   }
 }
 
-GameControl.propTypes = {
-  
-};
-
 const mapStateToProps = state => {
   return {
-    
+    winState: state.winState,
+    gameState: state.gameState
   }
 };
 
