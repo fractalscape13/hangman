@@ -23,16 +23,8 @@ export const wrongGuess = (guess) => {
 }
 
 export const newGame = () => {
-  // const { displayWord, secretWord, secretWord, win, lose, correctLetters, missedLetters, currentDiagram } = game;
   return {
     type: c.NEW_GAME,
-    // displayWord: displayWord,
-    // secretWord: secretWord,
-    // win: win,
-    // lose: lose,
-    // correctLetters: correctLetters,
-    // missedLetters: missedLetters,
-    // currentDiagram: currentDiagram
   }
 }
 

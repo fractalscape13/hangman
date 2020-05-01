@@ -3,29 +3,38 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Word = props => {
-  const ulStyled = styled.ul`
-    display: inline-block;
-    li {
-      display: inline-block;
-      border-bottom: 1px solid black;
-    }
-    span {
-      visibility: hidden;
-    }
-    span.visible {
-      visibility: visible;
-    }
-`;
+  
+  const ulStyles = {
+    listStyleType: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '25px'
+  }
+
+  const liStyles = {
+    visibility: 'hidden'
+  }
+
+  const underline = {
+    borderBottom: '1px solid black',
+    margin: '0 4px',
+    width: '30px',
+    display: 'flex',
+    justifyContent: 'center',
+  }
 
 console.log(props);
   return (
-    <ulStyled>
+    <ul style={ulStyles}>
       {props.secret.map((char, i) => 
-        <li key={i}>
-          <span className={props.correctLetters.includes(char) || props.missedLetters.includes(char) ?'visible':''}>{char}</span>
-        </li>
+        <div style={underline}>
+          <li style={liStyles} key={i}>
+            <span className={props.correctLetters.includes(char) || props.missedLetters.includes(char) ?'visible':''}>{char}</span>
+          </li>
+        </div>
       )}
-    </ulStyled>
+    </ul>
   )
 };
 

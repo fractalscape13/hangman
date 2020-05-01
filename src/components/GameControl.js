@@ -4,7 +4,7 @@ import Word from './Word'
 import { connect } from 'react-redux';
 import WinState from './WinState';
 import Diagram from './Diagram';
-import * as a from './../actions';
+import * as a from './../actions/index';
 
 class GameControl extends React.Component {
   
@@ -13,30 +13,31 @@ class GameControl extends React.Component {
   // }
   
   resetGame = () => {
-    a.newGame();
-    a.setWord();    
+    const action = a.newGame();
+    this.props.dispatch(action);
+    const action2 = a.setWord(); 
+    this.props.dispatch(action2);   
   }
   
   componentDidMount() {
-    console.log("Mounted");
     this.resetGame();
-    console.log(this.props.gameState);
-    
+    console.log('this.props is after componentDidMount', this.props);
   }
 
+
   render() {
-    console.log("THIS.PROPS IS:::::", this.props.winState);
+    console.log("THIS.PROPS IS: ::::", this.props);
     return (
       <React.Fragment>
-        {this.props.winState.win ? <WinState onReset={this.resetGame}/> : null}
-        <Diagram currentDiagram={this.props.winState.currentDiagram}/>
+        {this.props.gameState.win ? <WinState onReset={this.resetGame}/> : null}
+        <Diagram currentDiagram={this.props.gameState.currentDiagram}/>
         <Word 
           secret={this.props.gameState.secretWord} 
-          correctLetters={this.props.winState.correctLetters} 
-          missedLetters={this.props.winState.missedLetters}/>
+          correctLetters={this.props.gameState.correctLetters} 
+          missedLetters={this.props.gameState.missedLetters}/>
         <Letters 
-          correctLetters={this.props.winState.correctLetters} 
-          missedLetters={this.props.winState.missedLetters}/>
+          correctLetters={this.props.gameState.correctLetters} 
+          missedLetters={this.props.gameState.missedLetters}/>
       </React.Fragment>
     );
   }
@@ -44,8 +45,7 @@ class GameControl extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    winState: state.winState,
-    gameState: state.gameState
+    gameState: state
   }
 };
 

@@ -5,11 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import rootReducer from './reducers/index';
-// import InitialState from './components/InitialState';
+import reducer from './reducers/reducer';
 
 const store = createStore(
-  rootReducer,
+  reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
