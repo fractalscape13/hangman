@@ -59,8 +59,10 @@ class GameControl extends React.Component {
     console.log("THIS.PROPS IS: ::::", this.props);
     return (
       <React.Fragment>
-        {this.props.gameState.win ? <WinState onReset={this.resetGame}/> : null}
-        {this.props.gameState.lose ? <LoseState onReset={this.resetGame}/> : null}
+        <div className="endGameZone">
+          {this.props.gameState.win ? <WinState onReset={this.resetGame}/> : null}
+          {this.props.gameState.lose ? <LoseState onReset={this.resetGame}/> : null}
+        </div>
         <Diagram currentDiagram={this.props.gameState.currentDiagram}/>
         <Word 
           secret={this.props.gameState.displayWord}
