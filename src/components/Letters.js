@@ -15,8 +15,9 @@ const Letters = props => (
     {letters.map(letter => (
       <li className={(props.alreadyGuessedLetters.includes(letter) ? 'alreadyClicked' : 'clickable')}
       key={letter}
+      value={letter}
       // disabled={props.correctLetters.includes(letter) || props.missedLetters.includes(letter) ? true:false}
-      onClick={props.onClick}
+      onClick={() => props.onLetterClick(letter.toString())}
       >
           {letter}
         </li>

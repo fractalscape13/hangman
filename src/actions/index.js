@@ -1,24 +1,20 @@
 import * as c from './ActionTypes';
 
 export const correctGuess = (guess) => {
-  const { secretWord, correctLetters, missedLetters, currentDiagram, char } = guess;
+  const { secretWord, correctLetters, char } = guess;
   return {
-    type: c.GUESS,
+    type: c.CORRECT_GUESS,
     secretWord: secretWord.filter(x => x !== char),
-    correctLetters: correctLetters.push(char),
-    missedLetters: missedLetters,
-    currentDiagram: currentDiagram
+    correctLetters: [...correctLetters, char]
   }
 }
 
 export const wrongGuess = (guess) => {
-  const { secretWord, correctLetters, missedLetters, currentDiagram, char } = guess;
+  const { missedLetters, currentDiagram, char } = guess;
   return {
-    type: c.GUESS,
-    secretWord: secretWord,
-    correctLetters: correctLetters,
-    missedLetters: missedLetters.push(char),
-    currentDiagram: currentDiagram + 1
+    type: c.WRONG_GUESS,
+    missedLetters: [...missedLetters, char],
+    currentDiagram: currentDiagram
   }
 }
 

@@ -12,15 +12,17 @@ let initializeState = {
 }
 
 export default (state=initializeState, action) => {
-  const { displayWord, secretWord, correctLetters, missedLetters, currentDiagram } =  action;
+  const { secretWord, correctLetters, missedLetters, currentDiagram } =  action;
   switch (action.type) {
-    case c.GUESS:
+    case c.CORRECT_GUESS:
       return Object.assign({}, state, {
-        displayWord: displayWord,
         secretWord: secretWord,
-        correctLetters: correctLetters,
+        correctLetters: correctLetters
+    });
+    case c.WRONG_GUESS:
+      return Object.assign({}, state, {
         missedLetters: missedLetters,
-        currentDiagram: currentDiagram
+        currentDiagram: currentDiagram + 1
     });
     case c.SET_WORD:
         const secret = SecretWordList[Math.floor(Math.random()*(SecretWordList.length))].split('');
