@@ -10,28 +10,21 @@ const ulStyles = {
   alignItems: 'center'
 }
 
-const liStyles = {
-  margin: '0 2px',
-  width: '20px',
-  display: 'flex',
-  justifyContent: 'center'
-}
-
 const Letters = props => (
   <ul style={ulStyles} {...props}>
     {letters.map(letter => (
-      <li style={liStyles}
-        key={letter}
-        // disabled={props.correctLetters.includes(letter) || props.missedLetters.includes(letter) ? true:false}
-        onClick={props.onClick}
-        >
+      <li className={(props.alreadyGuessedLetters.includes(letter) ? 'alreadyClicked' : 'clickable')}
+      key={letter}
+      // disabled={props.correctLetters.includes(letter) || props.missedLetters.includes(letter) ? true:false}
+      onClick={props.onClick}
+      >
           {letter}
         </li>
     ))}
   </ul>
 )
 Letters.propTypes = {
-  correctLetters: PropTypes.array,
-  missedLetters: PropTypes.array
+  onClick: PropTypes.func,
+  alreadyGuessedLetters: PropTypes.array
 }
 export default Letters;

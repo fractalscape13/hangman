@@ -24,6 +24,10 @@ class GameControl extends React.Component {
     console.log('this.props is after componentDidMount', this.props);
   }
 
+  handleLetterClick = () => {
+
+  }
+
 
   render() {
     console.log("THIS.PROPS IS: ::::", this.props);
@@ -32,12 +36,14 @@ class GameControl extends React.Component {
         {this.props.gameState.win ? <WinState onReset={this.resetGame}/> : null}
         <Diagram currentDiagram={this.props.gameState.currentDiagram}/>
         <Word 
-          secret={this.props.gameState.secretWord} 
+          secret={this.props.gameState.secretWord}
           correctLetters={this.props.gameState.correctLetters} 
-          missedLetters={this.props.gameState.missedLetters}/>
+          missedLetters={this.props.gameState.missedLetters} 
+          />
         <Letters 
-          correctLetters={this.props.gameState.correctLetters} 
-          missedLetters={this.props.gameState.missedLetters}/>
+          onClick={this.handleLetterClick}
+          alreadyGuessedLetters={[...this.props.gameState.correctLetters, ...this.props.gameState.missedLetters]} 
+          />
       </React.Fragment>
     );
   }

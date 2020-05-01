@@ -13,18 +13,18 @@ const Word = props => {
   }
 
   const liStyles = {
-    visibility: 'hidden'
+    visibility: 'hidden',
+    fontSize: '50px'
   }
 
   const underline = {
     borderBottom: '1px solid black',
     margin: '0 4px',
-    width: '30px',
+    width: '50px',
     display: 'flex',
-    justifyContent: 'center',
-  }
+    justifyContent: 'center'
+    }
 
-console.log(props);
   return (
     <ul style={ulStyles}>
       {props.secret.map((char, i) => 
