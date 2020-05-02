@@ -69,6 +69,3 @@ _Open the contents of the directory in a text editor or IDE of your choice (e.g.
 *This webpage is licensed under the MIT license.*
 
 Copyright (c) 2020 **_Patrick Kille, Drake Wilcox, Joseph Wangemann_**
-
-Co-authored-by: Joseph <45412175+fractalscape13@users.noreply.github.com>
-Co-authored-by: Patrick Kille <59419677+PRKille@users.noreply.github.com>
