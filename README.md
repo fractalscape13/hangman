@@ -5,9 +5,14 @@
 #### _**Patrick Kille, Drake Wilcox, Joseph Wangemann**_
 
 ## User Interface
+#### This is the start screen when the app first loads
 ![StartScreen](./public/startscreen.png)
+
+#### This is the screen during play.  Letters that have been guessed get crossed out and become unclickable.  Correct guesses are shown and incorrect guesses slowly add to the diagram until a head, body, two legs, two arms and eyes are shown.
 ![PlayScreen](./public/playscreen.png)
+When a player has made 7 incorrect guesses, the game is over and a new game button will appear.  All letters become unclickable and the secret word is shown with the letters that were still missing in red.
 ![LoseScreen](./public/losescreen.png)
+When a player guesses every letter in the secret word, a win game message is shown and a new game button will appear.
 ![WinScreen](./public/winscreen.png)
 
 ## Design and Development
