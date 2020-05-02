@@ -5,7 +5,9 @@
 #### _**Patrick Kille, Drake Wilcox, Joseph Wangemann**_
 
 ## User Interface
-#### This is the start screen when the app first loads
+#### This is the classic game "Hangman" where a user guesses one letter at a time to try to spell out a secret or hidden word.  For every wrong guess, a part of a stick-figure body appears on the diagram until the seventh wrong guess which ends the game.  If every letter of the secret word is guessed, the user wins the game.
+
+#### This is the start screen when the app first loads.  A secret word is chosen and the empty spaces signify how many letters are in the word.  The letters on the bottom line are clickable as guesses.
 ![StartScreen](./public/startscreen.png)
 
 #### This is the screen during play.  Letters that have been guessed get crossed out and become unclickable.  Correct guesses are shown and incorrect guesses slowly add to the diagram until a head, body, two legs, two arms and eyes are shown.
