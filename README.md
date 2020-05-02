@@ -5,10 +5,10 @@
 #### _**Patrick Kille, Drake Wilcox, Joseph Wangemann**_
 
 ## User Interface
-![StartScreen](./img/startscreen.png)
-![PlayScreen](./img/playscreen.png)
-![LoseScreen](./img/losescreen.png)
-![WinScreen](./img/winscreen.png)
+![StartScreen](./public/img/startscreen.png)
+![PlayScreen](./public/img/playscreen.png)
+![LoseScreen](./public/img/losescreen.png)
+![WinScreen](./public/img/winscreen.png)
 
 ## Design and Development
 
